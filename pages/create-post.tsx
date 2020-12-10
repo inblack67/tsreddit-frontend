@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import Preloader from '../components/Preloader';
 import { useCreatePostMutation } from '../src/generated/graphql';
 import { CreatePostInterface } from '../src/interfaces';
-import { useApollo, withApollo } from '../src/apollo';
+import { withApollo } from '../src/apollo';
 import Layout from '../components/Layout';
 
 const CreatePost = () =>
