@@ -1,7 +1,9 @@
 import Head from 'next/head';
 import Navbar from './Navbar';
 
-const Layout = ({ children }) => {
+const Layout = ( { children } ) =>
+{
+
 	return (
 		<div>
 			<Head>
@@ -42,9 +44,10 @@ const Layout = ({ children }) => {
 				/>
 			</Head>
 			<Navbar />
-			{children}
+			{children }
 		</div>
 	);
 };
+
 
 export default Layout;

@@ -1,10 +1,11 @@
-import { useState, Fragment, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useRouter } from 'next/router';
 import Preloader from '../components/Preloader';
 import { LoginInterface } from '../src/interfaces';
 import { GetMeDocument, GetMeQuery, useLoginMutation, useHelloQuery } from '../src/generated/graphql';
-
+import { withApollo } from '../src/apollo';
+import Layout from '../components/Layout';
 
 const Login = () =>
 {
@@ -64,7 +65,7 @@ const Login = () =>
     }
 
     return (
-        <Fragment>
+        <Layout>
             <div className='container'>
                 <p className='flow-text center'>Login</p>
                 <form onSubmit={ handleSubmit( onLogin ) }>
@@ -105,9 +106,9 @@ const Login = () =>
                     </div>
                 </form>
             </div>
-        </Fragment>
+        </Layout>
     );
 };
 
 
-export default Login;
+export default withApollo( { ssr: false } )( Login );

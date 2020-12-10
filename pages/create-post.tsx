@@ -4,6 +4,8 @@ import { useRouter } from 'next/router';
 import Preloader from '../components/Preloader';
 import { useCreatePostMutation } from '../src/generated/graphql';
 import { CreatePostInterface } from '../src/interfaces';
+import { useApollo, withApollo } from '../src/apollo';
+import Layout from '../components/Layout';
 
 const CreatePost = () =>
 {
@@ -52,7 +54,8 @@ const CreatePost = () =>
     }
 
     return (
-        <Fragment>
+        <Layout>
+
             <div className='container'>
                 <p className='flow-text center'>Create Post</p>
                 <form onSubmit={ handleSubmit( onCreatePost ) }>
@@ -93,9 +96,9 @@ const CreatePost = () =>
                     </div>
                 </form>
             </div>
-        </Fragment>
+        </Layout>
     );
 };
 
 
-export default CreatePost;
+export default withApollo( { ssr: false } )( CreatePost );

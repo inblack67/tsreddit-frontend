@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { useLogoutMutation, useGetMeQuery } from '../src/generated/graphql';
 import { useRouter } from 'next/router';
 import { useApolloClient } from '@apollo/client';
-import { Fragment, useEffect } from 'react';
+import { useEffect } from 'react';
 import { isServer } from '../src/utils/constants';
 
 const Navbar = () =>

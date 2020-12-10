@@ -1,7 +1,9 @@
 import { useRouter } from 'next/router';
-import { useState, Fragment, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
+import Layout from '../components/Layout';
 import Preloader from '../components/Preloader';
+import { withApollo } from '../src/apollo';
 import { useRegisterMutation, GetMeQuery, GetMeDocument } from '../src/generated/graphql';
 import { RegisterInterface } from '../src/interfaces';
 
@@ -51,9 +53,8 @@ const Register = () =>
         return <Preloader />;
     }
 
-
     return (
-        <Fragment>
+        <Layout>
             <div className='container'>
                 <p className='flow-text center'>Register</p>
                 <form onSubmit={ handleSubmit( onRegister ) }>
@@ -125,8 +126,8 @@ const Register = () =>
                     </div>
                 </form>
             </div>
-        </Fragment>
+        </Layout>
     );
 };
 
-export default Register;
+export default withApollo( { ssr: false } )( Register );
