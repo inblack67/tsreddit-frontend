@@ -1,7 +1,8 @@
 import { useMemo } from 'react';
 import { ApolloClient, InMemoryCache, NormalizedCacheObject } from '@apollo/client';
 import { onError } from '@apollo/client/link/error';
-import { PaginatedPosts, PostsQuery } from './generated/graphql';
+import { PaginatedPosts } from '../src/generated/graphql';
+
 
 let apolloClient: ApolloClient<NormalizedCacheObject>;
 
@@ -10,7 +11,7 @@ function createIsomorphLink ()
     const { HttpLink } = require( '@apollo/client/link/http' );
 
     const httpLink = new HttpLink( {
-        uri: `${ process.env.NEXT_PUBLIC_SERVER_URL}/graphql`,
+        uri: `${ process.env.NEXT_PUBLIC_SERVER_URL }/graphql`,
         credentials: 'include',
     } );
 
@@ -44,6 +45,7 @@ function createApolloClient ()
     return new ApolloClient( {
         ssrMode: typeof window === 'undefined',
         link: errorLink.concat( createIsomorphLink() ),
+        credentials: 'include',
         cache: new InMemoryCache( {
             typePolicies: {
                 Query: {

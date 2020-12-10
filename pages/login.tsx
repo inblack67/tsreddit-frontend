@@ -11,12 +11,7 @@ const Login = () =>
     const router = useRouter();
     const [ submitting, setSubmitting ] = useState( false );
 
-    const { register, handleSubmit, errors } = useForm<LoginInterface>( {
-        defaultValues: {
-            email: 'aman@gmail.com',
-            password: "12345678"
-        }
-    } );
+    const { register, handleSubmit, errors } = useForm<LoginInterface>();
 
     const [ loginUser, { loading, error, data } ] = useLoginMutation();
 

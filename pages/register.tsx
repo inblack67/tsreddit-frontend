@@ -11,13 +11,7 @@ const Register = () =>
 
     const [ submitting, setSubmitting ] = useState( false );
 
-    const { register, handleSubmit, errors } = useForm<RegisterInterface>( {
-        defaultValues: {
-            name: 'Aman',
-            email: 'aman@gmail.com',
-            password: "Aman123@"
-        }
-    } );
+    const { register, handleSubmit, errors } = useForm<RegisterInterface>();
 
     const [ registerUser, { loading, data, error } ] = useRegisterMutation();
 
